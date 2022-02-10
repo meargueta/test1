@@ -1,0 +1,16 @@
+package libreria;
+
+public class MBIndex {
+  
+	public void categoria() {
+		
+	}
+public void autor() {
+		
+	}
+
+public void libros() {
+	
+}
+	
+}

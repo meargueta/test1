@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+	<h:form id="frmMain">
+ <p:dataTable id="catdt" var="fila" value="#{mBLibro.liblis}"  paginator="true" filteredValue="#{mBAutor.autlisf}" 
+    rows="5" rowsPerPageTemplate="25" paginatorPosition="bottom"   > 
+     <f:facet name="header">  
+     Consulta Libros
+      </f:facet>  
+      <p:column headerText="Nombre" style="width:20%" filterBy="#{fila.nombre}" filterMatchMode="contains" filterStyle="width:50%" >  
+            <h:outputText value="#{fila.nombre}" />  
+        </p:column>
+       
+         <p:column headerText="Precio" style="width:10%" filterBy="#{fila.nombre}" filterMatchMode="contains" filterStyle="width:50%" >  
+            <h:outputText value="#{fila.precios}" />  
+        </p:column>
+         <p:column headerText="Edicion" style="width:10%" filterBy="#{fila.edicion}" filterMatchMode="contains" filterStyle="width:50%" >  
+            <h:outputText value="#{fila.edicion}" />  
+        </p:column>
+        <p:column headerText="Autor" style="width:10%" filterBy="#{fila.idautor.nombre}" filterMatchMode="contains" filterStyle="width:50%" >  
+            <h:outputText value="#{fila.idautor.nombre}" />  
+        </p:column> 
+         <p:column headerText="Categoria" style="width:10%" filterBy="#{fila.nombre}" filterMatchMode="contains" filterStyle="width:50%" >  
+            <h:outputText value="#{fila.idcategoria.nombre}" />  
+        </p:column>  
+         <p:column style="width:4%" headerText="Editar">  
+               <p:commandButton id="ecbtn"  icon="fa fa-edit" title="Editar"  oncomplete="PF('dlgedit').show()" process="@this"  update=":dlgedit" >  
+                <f:setPropertyActionListener value="#{fila}"  target="#{mBLibro.librosel}"/>  
+            </p:commandButton>  
+            
+        </p:column>
+       
+      
+      
+      
+      
+       <f:facet name="footer">
+       
+            <p:commandButton   icon="fa fa-user-plus" value="Nuevo" actionListener="#{mBLibro.onCreate}"   oncomplete="PF('dlgadd').show()" process="@this" update="dlgadd"/>
+            
+           
+        </f:facet>
+      
+    </p:dataTable>
+
+</h:form>
+<p:dialog header="Editar" widgetVar="dlgedit" id="dlgedit" modal="true" resizable="false" height="350" focus="frmEdit:autne" appendTo="@(body)">
+   <p:outputPanel id="opedit" style="text-align:left;" >
+          <h:form id="frmEdit">  
+          <h:panelGrid columns="2" cellpadding="10" >
+            
+              <h:outputLabel>Nombre :</h:outputLabel>
+             <p:inputText  id="libn" value="#{mBLibro.librosel.nombre}"  label="Nombre" filter="true" filterMatchMode="startsWith" required="true" size="50"/>
+            
+             <h:outputLabel>Precio :</h:outputLabel>           
+             <p:inputText  id="prec" value="#{mBLibro.librosel.precios}"  label="Precio" filter="true" filterMatchMode="startsWith" required="true" size="50"/>
+            
+            <h:outputLabel>Autor :</h:outputLabel>
+            <p:selectOneMenu id="aut" value="#{mBLibro.librosel.idautor.idautor}"  effect="fold" filter="true" filterMatchMode="startsWith">
+               <f:selectItems value="#{mBLibro.autmap}" />
+               </p:selectOneMenu>  
+                <h:outputLabel>Categoria :</h:outputLabel>
+            <p:selectOneMenu id="cat" value="#{mBLibro.librosel.idcategoria.idcategoria}"  effect="fold" filter="true" filterMatchMode="startsWith">
+               <f:selectItems value="#{mBLibro.catmap}" />
+               </p:selectOneMenu>    
+           
+           </h:panelGrid>
+           
+          <p:separator />  
+           <p:commandButton id="btned" value="Actualizar" icon="ui-icon-disk" oncomplete="if (!args.validationFailed){PF('dlgedit').hide()}" actionListener="#{mBLibro.actualizar}"  update=":frmMain:catdt"></p:commandButton>  
+           <p:spacer width="20" height="20" />
+           <p:commandButton value="Cerrar" id="btnce" onclick="PF('dlgedit').hide()" process="@this"/>   
+           <p:spacer width="20" height="20" />
+           <p:separator />
+          </h:form>
+          </p:outputPanel> 
+   </p:dialog>
+   <p:dialog header="Agregar Autor" widgetVar="dlgadd" id="dlgadd" modal="true" resizable="false" height="350"  appendTo="@(body)">
+   <p:outputPanel id="opadd" style="text-align:left;" >
+          <h:form id="frmAdd">  
+          
+          <h:panelGrid columns="2" cellpadding="10" >                      
+                 <h:outputLabel>Nombre :</h:outputLabel>
+             <p:inputText  id="libn" value="#{mBLibro.librosel.nombre}"  label="Nombre" filter="true" filterMatchMode="startsWith" required="true" size="50"/>
+            
+             <h:outputLabel>Precio :</h:outputLabel>           
+             <p:inputText  id="prec" value="#{mBLibro.librosel.precios}"  label="Precio" filter="true" filterMatchMode="startsWith" required="true" size="50"/>
+            
+            <h:outputLabel>Autor :</h:outputLabel>
+            <p:selectOneMenu id="aut" value="#{mBLibro.librosel.idautor.idautor}"  effect="fold" filter="true" filterMatchMode="startsWith">
+               <f:selectItems value="#{mBLibro.autmap}" />
+               </p:selectOneMenu>  
+                <h:outputLabel>Categoria :</h:outputLabel>
+            <p:selectOneMenu id="cat" value="#{mBLibro.librosel.idcategoria.idcategoria}"  effect="fold" filter="true" filterMatchMode="startsWith">
+               <f:selectItems value="#{mBLibro.catmap}" />
+               </p:selectOneMenu>
+             </h:panelGrid>
+              <p:separator />  
+           <p:commandButton id="btnadd" value="Guardar" icon="ui-icon-disk" oncomplete="if (!args.validationFailed){PF('dlgadd').hide()}" actionListener="#{mBLibro.guardar}"  update=":frmMain:catdt"></p:commandButton>  
+           <p:spacer width="20" height="20" />
+           <p:commandButton value="Cerrar" id="btnce" onclick="PF('dlgedit').hide()" process="@this"/>   
+           <p:spacer width="20" height="20" />
+           <p:separator />
+             </h:form>
+             </p:outputPanel>
+             </p:dialog>
+</html>

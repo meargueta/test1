@@ -1,0 +1,23 @@
+
+feb. 08, 2022 13:04:11.613 NEW SESSION
+feb. 08, 2022 13:04:11.613 
+feb. 08, 2022 13:04:11.670 ###!!! [Child][PContentChild] Error: RunMessage(msgname=PContent::Reply_DiscardBrowsingContext) Channel closing: too late to send/recv, messages will be lost
+feb. 08, 2022 13:04:11.671 
+feb. 08, 2022 13:04:11.672 
+feb. 08, 2022 13:04:11.673 ###!!! [Child][PContentChild] Error: RunMessage(msgname=PContent::Msg_DestroyBrowsingContextGroup) Channel closing: too late to send/recv, messages will be lost
+feb. 08, 2022 13:04:11.674 
+feb. 08, 2022 13:04:11.675 [Parent 9492, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+feb. 08, 2022 13:04:11.676 [Parent 9492, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+feb. 08, 2022 13:04:11.802 [Parent 9492, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+feb. 08, 2022 13:04:11.802 [Parent 9492, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+feb. 08, 2022 13:04:11.803 [Parent 9492, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+feb. 08, 2022 13:04:11.804 [Parent 9492, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+feb. 08, 2022 14:18:17.922 [GFX1-]: shader-cache: Timed out before finishing loads
+feb. 08, 2022 14:18:18.39 [2022-02-08T20:18:18Z ERROR webrender_bindings::program_cache] shader-cache: Timed out before finishing loads
+feb. 08, 2022 14:20:11.371 [Parent 4236, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+feb. 10, 2022 15:17:35.423 NEW SESSION
+feb. 10, 2022 15:17:35.424 [GFX1-]: shader-cache: Timed out before finishing loads
+feb. 10, 2022 15:17:35.837 [2022-02-10T21:17:35Z ERROR webrender_bindings::program_cache] shader-cache: Timed out before finishing loads
+feb. 10, 2022 15:24:06.292 [Parent 2436, IPC I/O Parent] WARNING: pipe error: 232: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:565
+feb. 10, 2022 15:25:37.160 [Parent 9568, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167

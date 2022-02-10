@@ -1,0 +1,59 @@
+package libreria;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+import com.libreria.model.Libro;
+import com.libreria.services.LibroSvrImp;
+@ManagedBean(name="mBLibro")
+@ViewScoped
+public class MBLibros implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private List<Libro> liblis;
+	private List<Libro> liblif;
+	private Libro librosel;
+	LibroSvrImp libsvr = new LibroSvrImp();
+	
+	@PostConstruct
+	public void init(){
+		listar();
+	}
+	
+	private void listar() {
+		liblis=libsvr.findAll();
+	}
+	
+	public void onCreate() {
+		librosel = new Libro();
+	}
+	
+	
+	public List<Libro> getLiblis() {
+		return liblis;
+	}
+	public void setLiblis(List<Libro> liblis) {
+		this.liblis = liblis;
+	}
+	public List<Libro> getLiblif() {
+		return liblif;
+	}
+	public void setLiblif(List<Libro> liblif) {
+		this.liblif = liblif;
+	}
+	public Libro getLibrosel() {
+		return librosel;
+	}
+	public void setLibrosel(Libro librosel) {
+		this.librosel = librosel;
+	}
+	
+
+}

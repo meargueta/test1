@@ -1,10 +1,13 @@
 package libreria;
 
 import java.util.List;
-
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 import com.libreria.model.Autor;
+import com.libreria.services.AutorSvrImp;
+
 @ManagedBean(name="mBAutor")
 @ViewScoped
 public class MBAutor {
@@ -24,14 +27,16 @@ public void onCreate(){
 	autorsel = new Autor();
 }
 
-public void guardar(Autor o){
-	 ausvr.guardar(o);
+public void guardar(){
+	 ausvr.guardar(autorsel);
+	 listar();
 }
 public void actualizar(Autor o){
-	ausvr.actulizar(o);
+	ausvr.actualizar(autorsel);
+	listar();
 }
-public void eliminar(Autor o){
-	ausvr.eliminar(o)
+public void eliminar(){
+	ausvr.eliminar(autorsel);
 }
 public List<Autor> getAutlist() {
 	return autlist;
@@ -44,5 +49,11 @@ public Autor getAutorsel() {
 }
 public void setAutorsel(Autor autorsel) {
 	this.autorsel = autorsel;
+}
+public List<Autor> getAutlisf() {
+	return autlisf;
+}
+public void setAutlisf(List<Autor> autlisf) {
+	this.autlisf = autlisf;
 }
 }

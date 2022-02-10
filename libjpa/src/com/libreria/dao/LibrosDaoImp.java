@@ -1,5 +1,9 @@
 package com.libreria.dao;
 
-public class LibrosDaoImp {
+
+import com.libreria.model.Libro;
+import com.libreria.persistencia.DaoGenericoImp;
+
+public class LibrosDaoImp extends DaoGenericoImp<Libro, Long> implements ILibrosDao {
 
 }

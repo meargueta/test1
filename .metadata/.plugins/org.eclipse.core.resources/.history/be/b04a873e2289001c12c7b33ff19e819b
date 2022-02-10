@@ -1,0 +1,5 @@
+package com.libreria.services;
+
+public interface LibroSvr {
+
+}

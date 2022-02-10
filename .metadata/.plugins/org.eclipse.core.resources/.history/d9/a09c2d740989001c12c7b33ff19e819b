@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+	<h:form id="frmMain">
+ <p:dataTable id="catdt" var="fila" value="#{mBAutor.autlist}"  paginator="true" filteredValue="#{mBAutor.autlisf}" 
+    rows="5" rowsPerPageTemplate="25" paginatorPosition="bottom"   > 
+     <f:facet name="header">  
+     Consulta Autores
+     
+      </f:facet>  
+      <p:column headerText="Autor" style="width:20%" filterBy="#{fila.nombre}" filterMatchMode="contains" filterStyle="width:50%" >  
+            <h:outputText value="#{fila.nombre}" />  
+        </p:column>
+        <p:column headerText="Fecha de Nacimiento" style="width:8%"  >  
+            <h:outputText value="#{fila.fechaNacimiento}" >
+            <f:convertDateTime pattern="dd/MM/yyyy" />
+            </h:outputText>  
+           <p:column headerText="Pais" style="width:20%" filterBy="#{fila.nombre}" filterMatchMode="contains" filterStyle="width:50%" >  
+            <h:outputText value="#{fila.pais}" />  
+        </p:column>  
+            
+        </p:column>
+         <p:column style="width:4%" headerText="Editar">  
+               <p:commandButton id="ecbtn"  icon="fa fa-edit" title="Editar"  oncomplete="PF('dlgedit').show()" process="@this"  update=":dlgedit" >  
+                <f:setPropertyActionListener value="#{fila}"  target="#{mBAutor.autorsel}"/>  
+            </p:commandButton>  
+        </p:column>
+       
+      
+      
+      
+      
+       <f:facet name="footer">
+       
+            <p:commandButton   icon="fa fa-user-plus" value="Nuevo" actionListener="#{mBAutor.onCreate}"   oncomplete="PF('dlgadd').show()" process="@this" update="dlgadd"/>
+            
+           
+        </f:facet>
+      
+    </p:dataTable>
+
+</h:form>
+<p:dialog header="Editar" widgetVar="dlgedit" id="dlgedit" modal="true" resizable="false" height="250" focus="frmEdit:catn" appendTo="@(body)">
+   <p:outputPanel id="opedit" style="text-align:left;" >
+          <h:form id="frmEdit">  
+          <h:panelGrid columns="2" cellpadding="10" >
+            
+              <h:outputLabel>Nombre :</h:outputLabel>
+             <p:inputText  id="autn" value="#{mBAutor.autorsel.nombre}"  label="Nombre" filter="true" filterMatchMode="startsWith" required="true" size="50"/>
+            
+             <h:outputLabel>Fecha Nacimiento :</h:outputLabel>           
+             <p:calendar id="button" value="#{mBAutor.autorsel.fechaNacimiento}" showOn="button"/>
+             <h:outputLabel>Pais :</h:outputLabel>
+             <p:inputText  id="pai" value="#{mBAutor.autorsel.pais}"  label="Pais" filter="true" filterMatchMode="startsWith" required="true" size="50"/>
+           
+           
+           </h:panelGrid>
+           
+          <p:separator />  
+           <p:commandButton id="btned" value="Actualizar" icon="ui-icon-disk" oncomplete="if (!args.validationFailed){PF('dlgedit').hide()}" actionListener="#{mBcat.actualizar}"  update=":frmMain:catdt"></p:commandButton>  
+           <p:spacer width="20" height="20" />
+           <p:commandButton value="Cerrar" id="btnce" onclick="PF('dlgedit').hide()" process="@this"/>   
+           <p:spacer width="20" height="20" />
+           <p:separator />
+          </h:form>
+          </p:outputPanel> 
+   </p:dialog>
+   <p:dialog header="Agregar Autor" widgetVar="dlgadd" id="dlgadd" modal="true" resizable="false" height="150"  appendTo="@(body)">
+   <p:outputPanel id="opadd" style="text-align:left;" >
+          <h:form id="frmAdd">  
+          
+          <h:panelGrid columns="2" cellpadding="10" >                      
+             <h:outputLabel>Categoria :</h:outputLabel>
+             <p:inputText  id="catnadd" value="#{mBcat.catsel.nombre}"  label="Categoria" filter="true" filterMatchMode="startsWith" required="true" size="50"/>
+            
+             <h:outputLabel>Activo :</h:outputLabel>
+         
+           
+            <p:selectBooleanCheckbox value="#{mBcat.activov}" itemLabel="Activo" />
+             </h:panelGrid>
+             </h:form>
+             </p:outputPanel>
+             </p:dialog>
+</html>

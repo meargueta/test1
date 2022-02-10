@@ -1,0 +1,34 @@
+package com.libreria.services;
+
+import java.util.List;
+
+import com.libreria.dao.LibrosDaoImp;
+import com.libreria.model.Libro;
+
+public class LibroSvrImp implements LibroSvr {
+    LibrosDaoImp libdao = new LibrosDaoImp();
+	@Override
+	public List<Libro> findAll() {
+		
+		return libdao.findAll();
+	}
+
+	@Override
+	public void guardar(Libro ob) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void actualizar(Libro ob) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void eliminar(Libro ob) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

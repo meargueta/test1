@@ -1,0 +1,33 @@
+package com.libreria.services;
+
+import java.util.List;
+
+import com.libreria.model.Libro;
+
+public class LibroSvrImp implements LibroSvr {
+
+	@Override
+	public List<Libro> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void guardar(Libro ob) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void actualizar(Libro ob) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void eliminar(Libro ob) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
